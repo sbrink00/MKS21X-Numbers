@@ -1,24 +1,32 @@
 public class RealNumber{
-  private double x;
+  private double value;
 
-  public RealNumber(){
-    x = 10;
+  public RealNumber(double v){
+    value = v;
   }
 
-  public RealNumber(double value){
-    x = value;
+  public double add(RealNumber other){
+    return this.getValue() + other.getValue();
   }
 
-  public double getNum(){
-    return x;
+  public double multiply(RealNumber other){
+    return this.getValue() * other.getValue();
   }
 
-  public void setNum(int val){
-    x = val;
+  public double divide(RealNumber other){
+    return this.getValue() / other.getValue();
+  }
+
+  public double subtract(RealNumber other){
+    return this.getValue() - other.getValue();
+  }
+
+  public double getValue(){
+    return value;
   }
 
   public String toString(){
-    return "";
+    return "" + value;
   }
 
 
