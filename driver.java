@@ -25,6 +25,7 @@ public class driver{
     RationalNumber ra4 = new RationalNumber(196, 14);
     RationalNumber ra5 = new RationalNumber(500000, 10);
     RationalNumber ra6 = new RationalNumber(0, 5);
+    RationalNumber ra7 = new RationalNumber(9, 3);
 
 
     System.out.println(ra1.getNumerator());
@@ -35,6 +36,10 @@ public class driver{
     System.out.println(ra5.reciprocal().getDenominator());
     System.out.println(ra3.multiply(ra2));
     System.out.println(ra3.divide(ra2));
+    System.out.println(RationalNumber.gcd(12, 16));
+    System.out.println(ra2);
+    System.out.println(ra3.equals(ra7));
+    System.out.println(ra5.equals(ra7));
     //System.out.println(4/2);
   }
 }

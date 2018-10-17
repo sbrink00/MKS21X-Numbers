@@ -2,14 +2,15 @@ public class RationalNumber extends RealNumber{
   private int numerator;
   private int denominator;
 
-  public RationalNumber(int nume, int denom){
+  public RationalNumber(int nume, int deno){
     super(0.0);
     numerator = nume; //this constructor will deal with the issue of
-    denominator = denom; //zero as a denominator
-    if (denom == 0){
+    denominator = deno; //zero as a denominator
+    if (deno == 0){
       numerator = 0;
       denominator = 1;
     }
+    this.reduce();
   }
 
   public double getValue(){
@@ -31,7 +32,11 @@ public class RationalNumber extends RealNumber{
   }
 
   public boolean equals(RationalNumber other){
-    return false;
+    int myDeno = this.denominator;
+    int otherDeno = other.denominator;
+    RationalNumber r1 = new RationalNumber(this.numerator*otherDeno, this.denominator*otherDeno);
+    RationalNumber r2 = new RationalNumber(other.numerator*myDeno, other.denominator*myDeno);
+    return r2.numerator == r1.numerator;
   }
 
   public RationalNumber multiply(RationalNumber other){
@@ -47,6 +52,21 @@ public class RationalNumber extends RealNumber{
     output = this.multiply(recip);
     return output;
 
+  }
+
+  public static int gcd(int n1, int n2){
+    if (n1 == 0 || n2 == 0) return 1;
+    for (;n1 != n2;){
+      if (n1>n2) n1-= n2;
+      else n2 -= n1;
+    }
+    return n1;
+  }
+
+  private void reduce(){
+    int factor = gcd(this.numerator, this.denominator);
+    this.numerator /= factor;
+    this.denominator /= factor;
   }
 
   public String toString(){
