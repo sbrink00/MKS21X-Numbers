@@ -14,7 +14,7 @@ public class RationalNumber extends RealNumber{
   }
 
   public double getValue(){
-    return this.numerator/this.denominator;
+    return (double)this.numerator/(double)this.denominator;
   }
 
   public int getNumerator(){
@@ -32,26 +32,15 @@ public class RationalNumber extends RealNumber{
   }
 
   public boolean equals(RationalNumber other){
-    int myDeno = this.denominator;
-    int otherDeno = other.denominator;
-    RationalNumber r1 = new RationalNumber(this.numerator*otherDeno, this.denominator*otherDeno);
-    RationalNumber r2 = new RationalNumber(other.numerator*myDeno, other.denominator*myDeno);
-    return r2.numerator == r1.numerator;
+    int v1 = this.numerator*other.denominator;
+    int v2 = other.numerator*this.denominator;
+    return v1 == v2;
   }
 
-  public RationalNumber multiply(RationalNumber other){
-    RationalNumber output;
-    output = new RationalNumber(this.numerator * other.numerator, this.denominator * other.denominator);
-    return output;
-
-  }
-
-  public RationalNumber divide(RationalNumber other){
-    RationalNumber recip = other.reciprocal();
-    RationalNumber output;
-    output = this.multiply(recip);
-    return output;
-
+  public String toString(){
+    if (this.denominator == 1) return "" + this.numerator;
+    if (this.numerator == 0) return "" + 0;
+    else return this.numerator + "/" + this.denominator;
   }
 
   public static int gcd(int n1, int n2){
@@ -69,21 +58,33 @@ public class RationalNumber extends RealNumber{
     this.denominator /= factor;
   }
 
-  public String toString(){
-    return this.numerator + "/" + this.denominator;
+  public RationalNumber multiply(RationalNumber other){
+    RationalNumber output;
+    output = new RationalNumber(this.numerator * other.numerator, this.denominator * other.denominator);
+    return output;
+
   }
 
-  public void setNum(int nume, int denom){
-    numerator = nume;
-    denominator = denom;
+  public RationalNumber divide(RationalNumber other){
+    RationalNumber recip = other.reciprocal();
+    RationalNumber output;
+    output = this.multiply(recip);
+    return output;
+
   }
 
-  public String compareTo(RationalNumber other){
-    return "the return statement will compare the RationalNumber that calls compateTo and other";
+  public RationalNumber add(RationalNumber other){
+    RationalNumber output;
+    int top = this.numerator*other.denominator+other.numerator*this.denominator;
+    output = new RationalNumber(top, this.denominator*other.denominator);
+    return output;
   }
 
-  public String compareTo(RealNumber irrational, RationalNumber rational){
-    return "the return statement will compare the RationalNumber that calls compateTo and other";
+  public RationalNumber subtract(RationalNumber other){
+    RationalNumber output;
+    int top = this.numerator*other.denominator-other.numerator*this.denominator;
+    output = new RationalNumber(top, this.denominator*other.denominator);
+    return output;
   }
 
 }
