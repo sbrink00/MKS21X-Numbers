@@ -30,8 +30,27 @@ public class RationalNumber extends RealNumber{
     return output;
   }
 
+  public boolean equals(RationalNumber other){
+    return false;
+  }
+
+  public RationalNumber multiply(RationalNumber other){
+    RationalNumber output;
+    output = new RationalNumber(this.numerator * other.numerator, this.denominator * other.denominator);
+    return output;
+
+  }
+
+  public RationalNumber divide(RationalNumber other){
+    RationalNumber recip = other.reciprocal();
+    RationalNumber output;
+    output = this.multiply(recip);
+    return output;
+
+  }
+
   public String toString(){
-    return "";
+    return this.numerator + "/" + this.denominator;
   }
 
   public void setNum(int nume, int denom){
@@ -43,7 +62,7 @@ public class RationalNumber extends RealNumber{
     return "the return statement will compare the RationalNumber that calls compateTo and other";
   }
 
-  public String conpareTo(RealNumber irrational, RationalNumber rational){
+  public String compareTo(RealNumber irrational, RationalNumber rational){
     return "the return statement will compare the RationalNumber that calls compateTo and other";
   }
 
