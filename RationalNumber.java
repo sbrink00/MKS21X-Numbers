@@ -3,13 +3,31 @@ public class RationalNumber extends RealNumber{
   private int denominator;
 
   public RationalNumber(int nume, int denom){
+    super(0.0);
     numerator = nume; //this constructor will deal with the issue of
     denominator = denom; //zero as a denominator
+    if (denom == 0){
+      numerator = 0;
+      denominator = 1;
+    }
   }
 
-  public RationalNumber(){
-    numerator = 1;
-    denominator = 1;
+  public double getValue(){
+    return this.numerator/this.denominator;
+  }
+
+  public int getNumerator(){
+    return this.numerator;
+  }
+
+  public int getDenominator(){
+    return this.denominator;
+  }
+
+  public RationalNumber reciprocal(){
+    RationalNumber output;
+    output = new RationalNumber(this.denominator, this.numerator);
+    return output;
   }
 
   public String toString(){
